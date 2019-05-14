@@ -32,9 +32,23 @@ def exact_sum?(k, coins, res=[], bad=[])
   return res.include? true
 end
 
+# ALTERNATIVE SOLTUION 
+def exact_sum_alt?(k, coins)
+    return true if coins.include?(k)
+    return false if k < 0 || coins.empty?
+    exact_sum_alt?(k - coins[0], coins[1..-1]) || exact_sum_alt?(k, coins[1..-1])
+end
+
 
 puts exact_sum?(12, [1, 2, 3, 4, 5])
 # => true
 
 puts exact_sum?(11, [1, 5, 9, 13])
+# => false
+
+
+puts exact_sum_alt?(12, [1, 2, 3, 4, 5])
+# => true
+
+puts exact_sum_alt?(11, [1, 5, 9, 13])
 # => false
