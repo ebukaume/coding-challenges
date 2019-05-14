@@ -35,7 +35,7 @@ end
 # ALTERNATIVE SOLTUION 
 def exact_sum_alt?(k, coins)
     return true if coins.include?(k)
-    return false if k < 0 || coins.empty?
+    return false if k.zero? || coins.empty?
     exact_sum_alt?(k - coins[0], coins[1..-1]) || exact_sum_alt?(k, coins[1..-1])
 end
 
