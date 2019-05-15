@@ -30,5 +30,22 @@ def leftmost_nodes_sum(array)
     return sum
 end
   
-  puts leftmost_nodes_sum([2, 7, 5, 2, 6, 0, 9])
-  # => 11
+def leftmost_nodes_sum_recursive(array, sum = 0)
+    # your code here
+    def helper(array, index = 0)
+      return array[index] if array[2*index+1].nil?
+      sum =+ helper(array, 2*index+1) + array[index]
+      return sum
+    end
+    helper(array)  
+end
+  
+puts leftmost_nodes_sum([2, 7, 5, 2, 6, 0, 9])
+# 11
+puts leftmost_nodes_sum([2, 7, 5, 2, 6, 0, 9, 10, 12, 11, 18])
+# 21
+  
+puts leftmost_nodes_sum_recursive([2, 7, 5, 2, 6, 0, 9])
+# 11
+puts leftmost_nodes_sum_recursive([2, 7, 5, 2, 6, 0, 9, 10, 12, 11, 18])
+# 21
