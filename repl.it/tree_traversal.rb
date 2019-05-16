@@ -94,6 +94,14 @@ class Node
     result += "#{node.data} "
   end
   
+  def in_order(node)
+    # your code here
+    return "" if node.nil?
+    result = post_order(node.left)
+    result += "#{node.data} "
+    result += post_order(node.right)
+  end
+  
   tree = array_to_tree([10, 1, 2, 3, 4, 5, 6], 0)
   puts post_order(tree)
   #=> 3 4 1 5 6 2 10
