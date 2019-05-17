@@ -35,7 +35,7 @@ node = Node.new(array[0])
     def build_tree(node, new_data)
         if node.data.nil?
         node.data = new_data
-        return node
+        return
         end
         if node.data < new_data
         if node.right.nil? 
