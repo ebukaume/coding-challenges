@@ -29,7 +29,7 @@ end
   
 def binary_search_tree(array)
 # your code here
-node = Node.new(array[0])
+root = Node.new(array[0])
 
     # Helper method for building the binary search tree
     def build_tree(node, new_data)
@@ -56,7 +56,7 @@ node = Node.new(array[0])
 
     # Convert array to binary search tree
     array.each do |val|
-        build_tree(node, val)
+        build_tree(root, val)
     end
 
     # Read tree in pre-order
@@ -67,7 +67,7 @@ node = Node.new(array[0])
         result += pre_order(node.right)
     end
 
-    return pre_order(node).strip
+    return pre_order(root).strip
 end
 
 puts binary_search_tree([8, 3, 10, 1, 6, 14, 4, 7, 13])
