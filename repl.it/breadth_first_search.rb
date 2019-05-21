@@ -10,24 +10,18 @@
 # Return an array with the given graph in BFS order.
 
 
-def bfs(graph, start=0)
+def bfs(graph)
     # write your code here
-    $q = Queue.new
-    $q.enq start
-    $visited = []
+    q, visited = Queue.new, []
+    q.enq graph.keys[0]
 
-    def visit(graph, idx)
-        return if $visited.include? idx
-        graph[idx].each {|n| $q.enq n if !$visited.include? n}
-        $visited << idx
-        p $visited
-        p $q
+    until q.empty?
+        idx = q.deq
+        next if visited.include? idx
+        graph[idx].each {|node| q.enq node if !visited.include? node}
+        visited << idx
     end
-
-    until $q.empty?
-        visit(graph, $q.deq)
-    end
-    return $visited
+    return visited
 end
 
 
@@ -35,12 +29,14 @@ p bfs(
     {0=>[1, 2], 1=>[0, 2], 2=>[0, 1, 3, 4, 5], 3=>[2, 4], 4=>[3, 2], 5=>[2]}
 )
 
-# p bfs({
-# 0 => [2], 
-# 1 => [4], 
-# 2 => [5, 0, 3], 
-# 3 => [2], 
-# 4 => [1, 5], 
-# 5 => [4, 2]
-# })
-# # => [0, 2, 5, 3, 4, 1]
+# => [0, 1, 2, 3, 4, 5]
+
+p bfs({
+0 => [2], 
+1 => [4], 
+2 => [5, 0, 3], 
+3 => [2], 
+4 => [1, 5], 
+5 => [4, 2]
+})
+# => [0, 2, 5, 3, 4, 1]
