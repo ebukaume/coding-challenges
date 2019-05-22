@@ -36,11 +36,11 @@ end
 
 
 
-def depth_first_search_2(graph, key=0, res=[])
-    return if res.include? key
-    res << key    
-    graph[key].each {|value| depth_first_search(graph, value, res) unless res.include? value}
-    return res
+def depth_first_search_2(graph, key=0, result=[])
+    return if result.include? key
+    result << key    
+    graph[key].each {|value| depth_first_search(graph, value, result) unless res.include? value}
+    result
 end
 
 p depth_first_search({
