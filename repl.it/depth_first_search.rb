@@ -34,6 +34,15 @@ def depth_first_search(graph)
     return helper(graph, 0, visited = [])
 end
 
+
+
+def depth_first_search_2(graph, key=0, res=[])
+    return if res.include? key
+    res << key    
+    graph[key].each {|value| depth_first_search(graph, value, res) unless res.include? value}
+    return res
+end
+
 p depth_first_search({
     0=>[1, 2],
     1=>[0, 2], 
@@ -53,3 +62,4 @@ p depth_first_search({
     5 => [4, 2]
 })
 # => [0, 2, 5, 4, 1, 3]
+
