@@ -15,6 +15,7 @@
 # => 3
 
 
+# Long more detailed solution
 class Node
     attr_reader :data
     attr_accessor :left, :right
@@ -46,6 +47,16 @@ def recursive_tree_height(tree)
     return 1 if tree.left == nil && tree.right == nil
 
     [recursive_tree_height(tree.left), recursive_tree_height(tree.right)].max + 1
+end
+
+puts binary_tree_height([2, 7, 5, 2, 6, 0, 9])
+# => 3
+
+
+# Short fast solution
+def binary_tree_height(array_tree)
+    # write your code here
+    Math.log2(array_tree.size).ceil
 end
 
 puts binary_tree_height([2, 7, 5, 2, 6, 0, 9])
