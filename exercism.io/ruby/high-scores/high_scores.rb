@@ -1,9 +1,18 @@
 class HighScores
-  attr_reader :scores, :latest, :personal_best, :personal_top_three
+  attr_reader :scores
   def initialize(scores)
     @scores = scores
-    @latest = scores.last
-    @personal_top_three = scores.max(3)
-    @personal_best = personal_top_three.max
+  end
+
+  def latest
+    @latest ||= scores.last
+  end
+
+  def personal_top_three
+    @personal_top_three ||= scores.max(3)
+  end
+
+  def personal_best
+    @personal_best ||= personal_top_three.max
   end
 end
